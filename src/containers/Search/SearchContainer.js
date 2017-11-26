@@ -1,21 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 import { searchRequest } from '../../actions';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import MovieList from '../../components/MovieList/MovieList';
 
-const Button = styled.button`
-  padding: 0.5em;
-  color: #ffffff;
-  background: #3d4347;
-  border: 1px solid #3d4347;
-  border-radius: 3px;
-  cursor: pointer;
-  margin-left: 10px;
-`;
-
-class HomePageContainer extends Component {
+class SearchContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,8 +44,8 @@ class HomePageContainer extends Component {
           placeholder={'Search movies...'}
           onChange={this.updateSearchTerm}
           onKeyDown={this.checkKey}
+          onSearch={this.doSearch}
         />
-        <Button onClick={this.doSearch}>Find Me The Movie!</Button>
         <p>Total Results: {this.props.search.totalResults || 0}</p>
         <MovieList results={this.props.search.results} />
       </div>
@@ -74,4 +63,4 @@ const mapDispatchToProps = dispatch => ({
   searchRequest: searchTerm => dispatch(searchRequest(searchTerm))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePageContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);

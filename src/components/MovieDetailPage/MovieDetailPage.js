@@ -36,7 +36,7 @@ const MovieDetailPage = ({
     </p>
     <div>
       <div>
-        <img src={Poster} />
+        <img src={Poster} alt={`Movie Poster for ${Title}`} />
       </div>
       <div>
         <p>{Plot}</p>

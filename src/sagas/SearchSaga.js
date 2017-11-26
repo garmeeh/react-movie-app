@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
-import { getMovies, getMovie } from '../api/movieApi';
+import { getMovies } from '../api/movieApi';
 import * as actions from '../actions';
 
 export function* requestSearchResults({ searchTerm }) {
@@ -13,16 +13,4 @@ export function* requestSearchResults({ searchTerm }) {
 
 export function* searchResults() {
   yield takeLatest(actions.SEARCH_REQUEST, requestSearchResults);
-}
-
-// Movie Detail
-export function* requestMovieDetails({ id }) {
-  try {
-    const movie = yield call(getMovie, id);
-    yield put(actions.detailSuccess(movie));
-  } catch (error) {}
-}
-
-export function* movieDetails() {
-  yield takeLatest(actions.DETAIL_REQUEST, requestMovieDetails);
 }

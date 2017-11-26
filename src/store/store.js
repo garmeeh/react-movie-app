@@ -5,9 +5,10 @@ import { routerMiddleware } from 'react-router-redux';
 import rootReducer from './reducers';
 import rootSagas from './sagas';
 
+export const history = createHistory();
+
 export default state => {
   const sagaMiddleware = createSagaMiddleware();
-  const history = createHistory();
   const routerMiddleW = routerMiddleware(history);
   const middleware = applyMiddleware(sagaMiddleware, routerMiddleW);
   const store = createStore(rootReducer, state, middleware);

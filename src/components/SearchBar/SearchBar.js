@@ -10,13 +10,26 @@ const Input = styled.input`
   min-width: 20%;
 `;
 
-const SearchBar = ({ onChange, placeholder, onKeyDown }) => (
-  <Input
-    type="search"
-    placeholder={placeholder}
-    onChange={onChange}
-    onKeyDown={onKeyDown}
-  />
+const Button = styled.button`
+  padding: 0.5em;
+  color: #ffffff;
+  background: #3d4347;
+  border: 1px solid #3d4347;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 10px;
+`;
+
+const SearchBar = ({ onChange, placeholder, onKeyDown, onSearch }) => (
+  <div>
+    <Input
+      type="search"
+      placeholder={placeholder}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+    />
+    <Button onClick={onSearch}>Find Me The Movie!</Button>
+  </div>
 );
 
 export default SearchBar;
