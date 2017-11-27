@@ -1,15 +1,14 @@
 const API_KEY = '981f13a0';
+const MOVIE_API_BASE_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`;
 
 const getMovies = searchTerm => {
-  const API_URL = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}`;
-  return fetch(API_URL)
+  return fetch(`${MOVIE_API_BASE_URL}&s=${searchTerm}`)
     .then(response => response.json())
     .catch(error => error);
 };
 
 const getMovie = id => {
-  const API_URL = `http://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`;
-  return fetch(API_URL)
+  return fetch(`${MOVIE_API_BASE_URL}&i=${id}`)
     .then(response => response.json())
     .catch(error => error);
 };
